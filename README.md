@@ -5,7 +5,7 @@ This repository contains **two separate Node.js projects** located inside the fo
 
 - `calculator` – A basic Node.js Project - Average Calculator HTTP
 Microservice server.
-- `stock_price_aggrator` – A Node.js application that aggregates stock prices.
+- `stock_price_aggregator` – A Node.js application that aggregates stock prices.
 
 ---
 
@@ -16,7 +16,7 @@ Microservice server.
 ├── calculator/
 │   ├── server.js
 │   └── package.json
-├── stock_price_aggrator/
+├── stock_price_aggregator/
 │   ├── index.js
 │   └── package.json
 └── README.md
@@ -70,13 +70,13 @@ Test :
 ### 📁 Location
 
 ```
-223aa16917/stock_price_aggrator/
+223aa16917/stock_price_aggregator/
 ```
 
 ### 📦 Install Dependencies
 
 ```bash
-cd ../stock_price_aggrator
+cd ../stock_price_aggregator
 npm install
 ```
 
