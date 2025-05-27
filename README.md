@@ -3,7 +3,7 @@
 
 This repository contains **two separate Node.js projects** located inside the folder `22311a6917`. Each sub-project can be run independently. The two sub-projects are:
 
-- `calculator` – A basic Node.js-based Average Calculator HTTP
+- `calculator` – A basic Node.js Project - Average Calculator HTTP
 Microservice server.
 - `stock_price_aggrator` – A Node.js application that aggregates stock prices.
 
