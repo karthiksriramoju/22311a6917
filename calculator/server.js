@@ -27,69 +27,60 @@ function fetchNumbers(type) {
     });
 }
 
-// app.get('/numbers/:numberid', async (req, res) => {
-//     const numberid = req.params.numberid;
+app.get('/numbers/:numberid', async (req, res) => {
+    const numberid = req.params.numberid;
 
-//     if (!['p', 'f', 'e', 'r'].includes(numberid)) {
-//         return res.status(400).json({ error: 'Invalid number ID' });
-//     }
+    if (!['p', 'f', 'e', 'r'].includes(numberid)) {
+        return res.status(400).json({ error: 'Invalid number ID' });
+    }
 
-//     const windowPrevState = Array.from(window);
-//     let newNumbers = [];
+    const windowPrevState = Array.from(window);
+    let newNumbers = [];
 
-//     try {
-//         const response = await fetchNumbers(numberid);
-//         newNumbers = response.data.numbers || [];
-//     } catch (err) {
-//         console.error("Fetch error:", err.response?.status, err.response?.data);
-//         newNumbers = []; // treat errors as empty response
-//     }
+    try {
+        const response = await fetchNumbers(numberid);
+        newNumbers = response.data.numbers || [];
+    } catch (err) {
+        console.error("Fetch error:", err.response?.status, err.response?.data);
+        newNumbers = []; // treat errors as empty response
+    }
 
-//     const tempWindow = Array.from(window);
+    const tempWindow = Array.from(window);
 
-//     for (const num of newNumbers) {
-//         if (!window.has(num)) {
-//             tempWindow.push(num);
-//         }
-//     }
+    for (const num of newNumbers) {
+        if (!window.has(num)) {
+            tempWindow.push(num);
+        }
+    }
 
-//     while (tempWindow.length > WINDOW_SIZE) {
-//         tempWindow.shift();
-//     }
+    while (tempWindow.length > WINDOW_SIZE) {
+        tempWindow.shift();
+    }
 
-//     // Update window
-//     window.clear();
-//     tempWindow.forEach(n => window.add(n));
+    // Update window
+    window.clear();
+    tempWindow.forEach(n => window.add(n));
 
-//     const windowCurrState = Array.from(window);
-//     const avg =
-//         windowCurrState.length > 0
-//             ? (
-//                   windowCurrState.reduce((a, b) => a + b, 0) / windowCurrState.length
-//               ).toFixed(2)
-//             : 0.0;
+    const windowCurrState = Array.from(window);
+    const avg =
+        windowCurrState.length > 0
+            ? (
+                  windowCurrState.reduce((a, b) => a + b, 0) / windowCurrState.length
+              ).toFixed(2)
+            : 0.0;
 
-//     const responsePayload = {
-//         windowPrevState,
-//         windowCurrState,
-//         numbers: newNumbers,
-//         avg: parseFloat(avg)
-//     };
+    const responsePayload = {
+        windowPrevState,
+        windowCurrState,
+        numbers: newNumbers,
+        avg: parseFloat(avg)
+    };
 
-//     return res.status(200).json(responsePayload);
-// });
+    return res.status(200).json(responsePayload);
+});
 
 
-app.get('/numbers/e', async (req, res) => {
-    res.json({
-        
-            "windowPrevState": [],
-            "windowCurrState" : [2, 4, 6, 8],
-            "numbers": [2, 4, 6, 8], 
-            "avg": 5.00
-    });
-}
-)
+
 app.listen(PORT, () => {
     console.log(`✅ Microservice running at http://localhost:${PORT}`);
 });
